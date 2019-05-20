@@ -1,24 +1,24 @@
 @charset "utf-8";
-/* CSS Document */
 
+html,
 body,
 td,
 th,
 p {
   font-family: Roboto, Arial, Helvetica, sans-serif;
-  font-size: 10pt;
+  font-size: 16pt;
   color: #333;
-  line-height: 1.5;
+  line-height: 1.2em;
 }
 body {
   background-color: #fdfdfd;
   margin: 0;
-  position: relative;
+  /* position: relative; */
 }
 ul,
 li {
   font-family: Roboto, Arial, Helvetica, sans-serif;
-  font-size: 10pt;
+  font-size: 1em;
   color: #333;
 }
 a {
@@ -63,7 +63,7 @@ section {
 #footer {
   background-color: #444;
   color: #aaa;
-  font-size: 8pt;
+  font-size: 0.8em;
   letter-spacing: 1px;
   padding: 25px;
   text-align: center;
@@ -81,7 +81,7 @@ nav h1 {
 }
 nav h1 a {
   color: #fff;
-  font-size: 14pt;
+  font-size: 1.4em;
   font-weight: 200;
   letter-spacing: 10px;
   text-transform: uppercase;
@@ -90,7 +90,7 @@ nav h1 a {
   padding: 10px 40px 16px;
   list-style: none;
   background-color: #eee;
-  font-size: 17px;
+  font-size: 1.7em;
   margin: 0;
   width: calc(50% - 80px);
 }
@@ -133,7 +133,7 @@ nav h1 a {
 }
 .filter-options h2 {
   color: white;
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: normal;
   line-height: 1;
   margin: 0 20px;
@@ -142,7 +142,7 @@ nav h1 a {
   background-color: white;
   border: 1px solid #fff;
   font-family: Roboto, Arial, sans-serif;
-  font-size: 11pt;
+  font-size: 1.1em;
   height: 35px;
   letter-spacing: 0;
   margin: 10px;
@@ -179,7 +179,7 @@ nav h1 a {
 #restaurants-list li h1 {
   color: #f18200;
   font-family: Roboto, Arial, sans-serif;
-  font-size: 14pt;
+  font-size: 1.4em;
   font-weight: 200;
   letter-spacing: 0;
   line-height: 1.3;
@@ -188,14 +188,14 @@ nav h1 a {
 }
 #restaurants-list p {
   margin: 0;
-  font-size: 11pt;
+  font-size: 1.1em;
 }
 #restaurants-list li a {
   background-color: orange;
   border-bottom: 3px solid #eee;
   color: #fff;
   display: inline-block;
-  font-size: 10pt;
+  font-size: 1em;
   margin: 15px 0 0;
   padding: 8px 30px 10px;
   text-align: center;
@@ -231,7 +231,7 @@ nav h1 a {
 #restaurant-name {
   color: #f18200;
   font-family: Roboto, Arial, sans-serif;
-  font-size: 20pt;
+  font-size: 2em;
   font-weight: 200;
   letter-spacing: 0;
   margin: 15px 0 30px;
@@ -248,7 +248,7 @@ nav h1 a {
 #restaurant-cuisine {
   background-color: #333;
   color: #ddd;
-  font-size: 12pt;
+  font-size: 1.2em;
   font-weight: 300;
   letter-spacing: 10px;
   margin: 0 0 20px;
@@ -269,7 +269,7 @@ nav h1 a {
 }
 #reviews-container h2 {
   color: #f58500;
-  font-size: 24pt;
+  font-size: 2.4em;
   font-weight: 300;
   letter-spacing: -1px;
   padding-bottom: 1pt;
