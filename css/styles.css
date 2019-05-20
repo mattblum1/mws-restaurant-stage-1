@@ -1,5 +1,12 @@
 @charset "utf-8";
 
+img,
+embed,
+object,
+video {
+  max-width: 100%;
+}
+
 html,
 body,
 td,
@@ -167,11 +174,12 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Listing ====================== */
-#restaurants-list {
+ul#restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
-  padding: 30px 15px 60px;
+  /* padding: 30px 15px 60px; */
+  padding: 15px;
   text-align: center;
 }
 ul#restaurants-list {
@@ -195,9 +203,9 @@ ul#restaurants-list li {
   background-color: #ccc;
   display: block;
   margin: 0;
-  max-width: 100%;
-  min-height: 248px;
-  min-width: 100%;
+  /* min-height: 248px; */
+  min-width: 207px;
+  min-height: 155px;
 }
 #restaurants-list li h1 {
   color: #f18200;
@@ -220,7 +228,7 @@ ul#restaurants-list li {
   display: inline-block;
   font-size: 1rem;
   margin: 15px 0 0;
-  padding: 8px 30px 10px;
+  padding: 11.5px 30px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
