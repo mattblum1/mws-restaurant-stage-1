@@ -1,10 +1,11 @@
 @charset "utf-8";
 
-html,
 body {
+  background-color: #fdfdfd;
   font-size: 16px;
+  margin: 0;
+  /* position: relative; */
 }
-
 html,
 body,
 td,
@@ -13,11 +14,6 @@ p {
   font-family: Roboto, Arial, Helvetica, sans-serif;
   color: #333;
   line-height: 1.2em;
-}
-body {
-  background-color: #fdfdfd;
-  margin: 0;
-  /* position: relative; */
 }
 img,
 embed,
@@ -298,6 +294,9 @@ ul#restaurants-list li {
   border-top: 1px solid #fff;
   padding: 30px 40px;
   /* width: 100%; */
+}
+#restaurant-container #restaurant-img {
+  border-radius: 20px 20px 0 0;
 }
 #reviews-container {
   padding: 30px 40px 80px;
