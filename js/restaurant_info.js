@@ -1,3 +1,4 @@
+let i = 0;
 let restaurant;
 var newMap;
 
@@ -41,22 +42,6 @@ initMap = () => {
   });
 };
 
-/* window.initMap = () => {
-  fetchRestaurantFromURL((error, restaurant) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      self.map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: restaurant.latlng,
-        scrollwheel: false
-      });
-      fillBreadcrumb();
-      DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
-    }
-  });
-} */
-
 /**
  * Get current restaurant from page URL.
  */
@@ -88,26 +73,27 @@ fetchRestaurantFromURL = callback => {
  * Create restaurant HTML and add it to the webpage
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
-  console.warn('restaurant', restaurant);
-
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
-
-  const address = document.getElementById('restaurant-address');
-  address.innerHTML = restaurant.address;
+  // name.tabIndex = getTabIndex();
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img';
   image.alt = restaurant.name;
+  // image.tabIndex = getTabIndex();
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
-  const cuisine = document.getElementById('restaurant-cuisine');
-  cuisine.innerHTML = restaurant.cuisine_type;
+  const address = document.getElementById('restaurant-address');
+  address.innerHTML = restaurant.address;
+  // address.tabIndex = getTabIndex();
 
-  // fill operating hours
+  // Fill operating hours
   if (restaurant.operating_hours) {
     fillRestaurantHoursHTML();
   }
+
+  const cuisine = document.getElementById('restaurant-cuisine');
+  cuisine.innerHTML = restaurant.cuisine_type;
   // fill reviews
   fillReviewsHTML();
 };
@@ -119,6 +105,7 @@ fillRestaurantHoursHTML = (
   operatingHours = self.restaurant.operating_hours
 ) => {
   const hours = document.getElementById('restaurant-hours');
+  // hours.tabIndex = getTabIndex();
   for (let key in operatingHours) {
     const row = document.createElement('tr');
 
@@ -134,6 +121,11 @@ fillRestaurantHoursHTML = (
   }
 };
 
+// getTabIndex = () => {
+//   i++;
+//   return i;
+// };
+
 /**
  * Create all reviews HTML and add them to the webpage.
  */
@@ -141,30 +133,35 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
   title.innerHTML = 'Reviews';
+  title.tabIndex = 0;
   container.appendChild(title);
 
   if (!reviews) {
     const noReviews = document.createElement('p');
     noReviews.innerHTML = 'No reviews yet!';
+    noReviews.tabIndex = 0;
     container.appendChild(noReviews);
     return;
   }
   const ul = document.getElementById('reviews-list');
   reviews.forEach(review => {
-    ul.appendChild(createReviewHTML(review));
+    ul.appendChild(createReviewHTML(review, i));
   });
   container.appendChild(ul);
 };
 
+i = 0;
 /**
  * Create review HTML and add it to the webpage.
  */
 createReviewHTML = review => {
-  const li = document.createElement('li');
-
   // Header
   const div = document.createElement('div');
   div.className = 'review-header';
+
+  // Li
+  const li = document.createElement('li');
+  li.tabIndex = 0;
 
   // Name
   const name = document.createElement('div');
