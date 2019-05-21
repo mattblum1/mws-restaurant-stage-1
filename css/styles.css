@@ -325,3 +325,31 @@ ul#restaurants-list li {
 #restaurant-hours td {
   color: #666;
 }
+
+/* ====================== Skip Content ====================== */
+#skiptocontent a {
+  padding: 6px;
+  position: absolute;
+  top: -45px;
+  left: 0px;
+  -webkit-transition: top 1s ease-out;
+  transition: top 1s ease-out;
+  z-index: 100;
+
+  background-color: orange;
+  border-bottom: 3px solid #eee;
+  color: #fff;
+  font-size: 1rem;
+  padding: 11.5px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#skiptocontent a:focus {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  -webkit-transition: top 0.1s ease-in;
+  transition: top 0.1s ease-in;
+}
