@@ -274,7 +274,7 @@ ul#restaurants-list li {
   line-height: 1.1;
 }
 #restaurant-img {
-  width: 90%;
+  width: 100%;
 }
 #restaurant-address {
   font-size: 1.2rem;
@@ -290,7 +290,7 @@ ul#restaurants-list li {
   padding: 2px 0;
   text-align: center;
   text-transform: uppercase;
-  width: 90%;
+  /* width: 90%; */
 }
 #restaurant-container,
 #reviews-container {
