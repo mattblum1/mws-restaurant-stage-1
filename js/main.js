@@ -5,10 +5,11 @@ var markers = [];
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
-document.addEventListener('DOMContentLoaded', event => {
+document.addEventListener('DOMContentLoaded', () => {
   initMap(); // added
   fetchNeighborhoods();
   fetchCuisines();
+  _registerServiceWorkers();
 });
 
 /**
@@ -200,11 +201,29 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 /**
  * Register Service Worker
  */
-if (navigator.serviceWorker) {
+_registerServiceWorkers = () => {
+  if (!navigator.serviceWorker) return;
+
   navigator.serviceWorker
     .register('/sw.js')
-    .then(() => console.warn('Service Worker Register Success'))
-    .catch(err => console.log('Service Worker Register Error:', err));
-} else {
-  console.warn('Service Workers not supported by browser');
-}
+    .then(() => console.log('Service Worker Register Success'))
+    .catch(err => console.warn('Service Worker Register Error', err));
+
+  // if ('serviceWorker' in navigator) {
+  //   window.addEventListener('load', function() {
+  //     navigator.serviceWorker.register('/sw.js').then(
+  //       function(registration) {
+  //         // Registration was successful
+  //         console.log(
+  //           'ServiceWorker registration successful with scope: ',
+  //           registration.scope
+  //         );
+  //       },
+  //       function(err) {
+  //         // registration failed :(
+  //         console.log('ServiceWorker registration failed: ', err);
+  //       }
+  //     );
+  //   });
+  // }
+};
