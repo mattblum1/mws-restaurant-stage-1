@@ -2,19 +2,17 @@ var cacheName = 'restaurant-reviews';
 var cacheVersion = 'v1';
 var staticCacheName = `${cacheName}-${cacheVersion}`;
 
-// self.addEventListener('fetch', function(event) {
-//   console.log('event.request', event.request);
-// });
-
+// Cache static assets
 self.addEventListener('install', event => {
-  console.warn('entering the install event...');
   event.waitUntil(
     caches.open(staticCacheName).then(cache => {
       return cache.addAll([
-        // '/',
+        '/',
         // 'js/',
         // 'css/',
         // 'img/',
+        '/restaurant.html',
+        'data/restaurants.json',
         'index.html',
         'css/styles.css',
         'css/xs.css',
@@ -41,8 +39,8 @@ self.addEventListener('install', event => {
   );
 });
 
+// Delete all caches except for the current version
 self.addEventListener('activate', event => {
-  console.warn('entering the activate event...');
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
@@ -58,9 +56,18 @@ self.addEventListener('activate', event => {
   );
 });
 
-// self.addEventListener('message', function(event) {
-//   console.warn('entering the message event...');
-//   if (event.data.action === 'skipWaiting') {
-//     self.skipWaiting();
-//   }
-// });
+// Use cached HTML pages if available
+self.addEventListener('fetch', event => {
+  //   console.log(event.request);
+  var requestUrl = new URL(event.request.url);
+
+  if (requestUrl.origin === location.origin) {
+    if (requestUrl.pathname === '/') {
+      event.respondWith(caches.match('/'));
+      return;
+    } else if (requestUrl.pathname === '/restaurant.html') {
+      event.respondWith(caches.match('/restaurant.html'));
+      return;
+    }
+  }
+});
