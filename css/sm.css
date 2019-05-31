@@ -1,3 +1,13 @@
 ul#restaurants-list {
   grid-template-columns: repeat(2, 1fr);
 }
+
+.filter-options select,
+.filter-options select:first-of-type,
+.filter-options select:last-of-type {
+  margin: 10px 10px 10px 0;
+}
+
+.filter-options {
+  flex-direction: row;
+}
