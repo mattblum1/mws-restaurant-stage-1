@@ -3,17 +3,19 @@
  */
 class DBHelper {
   /**
-   * Database URL.
-   * Change this to restaurants.json file location on your server.
+   * URL to API end point which returns JSON.
    */
   static get DATABASE_URL() {
-    // Retrieve data from server
     const port = 1337;
     return `http://localhost:${port}/restaurants`;
+  }
 
-    // Retrieve data from static file
-    // const port = 8000;
-    // return `http://localhost:${port}/data/restaurants.json`;
+  /**
+   * URL to static JSON file.
+   */
+  static get LOCAL_DATABASE_URL() {
+    const port = 8000;
+    return `http://localhost:${port}/data/restaurants.json`;
   }
 
   /**
@@ -33,6 +35,9 @@ class DBHelper {
       });
   }
 
+  /**
+   * Check response status.
+   */
   static checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
       return Promise.resolve(response);
@@ -41,30 +46,12 @@ class DBHelper {
     }
   }
 
+  /**
+   * Parse JSON.
+   */
   static parseJson(response) {
     return response.json();
   }
-
-  /**
-   * Fetch all restaurants.
-   */
-  // static fetchRestaurants(callback) {
-  //   let xhr = new XMLHttpRequest();
-  //   xhr.open('GET', DBHelper.DATABASE_URL);
-  //   xhr.onload = () => {
-  //     if (xhr.status === 200) {
-  //       // Got a success response from server!
-  //       const json = JSON.parse(xhr.responseText);
-  //       const restaurants = json.restaurants;
-  //       callback(null, restaurants);
-  //     } else {
-  //       // Oops!. Got an error from server.
-  //       const error = `Request failed. Returned status of ${xhr.status}`;
-  //       callback(error, null);
-  //     }
-  //   };
-  //   xhr.send();
-  // }
 
   /**
    * Fetch a restaurant by its ID.
