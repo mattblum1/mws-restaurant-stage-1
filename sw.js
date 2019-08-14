@@ -10,19 +10,17 @@ self.addEventListener('install', event => {
     caches.open(staticCacheName).then(cache => {
       return cache.addAll([
         '/',
-        // 'js/',
-        // 'css/',
-        // 'img/',
-        // 'data/restaurants.json',
         'index.html',
         '/restaurant.html',
+        'manifest.json',
         'css/styles.css',
         'css/xs.css',
         'css/sm.css',
         'css/md.css',
         'css/lg.css',
-        'js/main.js',
-        'js/restaurant_info.js',
+        // 'https://normalize-css.googlecode.com/svn/trunk/normalize.css', // 404 returned
+        'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
+        'icons/icon.png',
         'img/1.jpg',
         'img/2.jpg',
         'img/3.jpg',
@@ -33,10 +31,10 @@ self.addEventListener('install', event => {
         'img/8.jpg',
         'img/9.jpg',
         'img/10.jpg',
-        // 'https://normalize-css.googlecode.com/svn/trunk/normalize.css', // 404 returned
-        'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
+        'js/main.js',
+        'js/restaurant_info.js',
         'https://fonts.googleapis.com/css?family=Roboto&display=swap'
-        // 'http://localhost:1337/restaurants' // Use IndexDB for JSON
+        // 'http://localhost:1337/restaurants' // Use IndexDB for cahcing JSON
       ]);
     })
   );
@@ -84,7 +82,7 @@ self.addEventListener('activate', function(event) {
 function createDB() {
   console.warn('createDB fired...');
 
-  // idb.open('restaurants', 1, function(upgradeDB) {
+  // idb.open('restaurants', 2, function(upgradeDB) {
   //   // var store = upgradeDB.createObjectStore('beverages', {
   //   //   keyPath: 'id'
   //   // });
