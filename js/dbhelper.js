@@ -13,10 +13,10 @@ class DBHelper {
   /**
    * URL to static JSON file.
    */
-  static get LOCAL_DATABASE_URL() {
-    const port = 8000;
-    return `http://localhost:${port}/data/restaurants.json`;
-  }
+  // static get LOCAL_DATABASE_URL() {
+  //   const port = 8000;
+  //   return `http://localhost:${port}/data/restaurants.json`;
+  // }
 
   /**
    * Fetch all restaurants.
