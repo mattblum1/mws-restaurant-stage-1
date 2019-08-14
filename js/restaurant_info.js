@@ -75,17 +75,14 @@ fetchRestaurantFromURL = callback => {
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
-  // name.tabIndex = getTabIndex();
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img';
   image.alt = restaurant.name;
-  // image.tabIndex = getTabIndex();
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
-  // address.tabIndex = getTabIndex();
 
   // Fill operating hours
   if (restaurant.operating_hours) {
@@ -94,7 +91,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
-  // fill reviews
+
+  // Fill reviews
   fillReviewsHTML();
 };
 
@@ -105,7 +103,7 @@ fillRestaurantHoursHTML = (
   operatingHours = self.restaurant.operating_hours
 ) => {
   const hours = document.getElementById('restaurant-hours');
-  // hours.tabIndex = getTabIndex();
+
   for (let key in operatingHours) {
     const row = document.createElement('tr');
 
@@ -120,11 +118,6 @@ fillRestaurantHoursHTML = (
     hours.appendChild(row);
   }
 };
-
-// getTabIndex = () => {
-//   i++;
-//   return i;
-// };
 
 /**
  * Create all reviews HTML and add them to the webpage.
@@ -150,7 +143,6 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   container.appendChild(ul);
 };
 
-i = 0;
 /**
  * Create review HTML and add it to the webpage.
  */
