@@ -1,3 +1,5 @@
+// import idb from 'idb';
+
 let restaurants, neighborhoods, cuisines;
 var newMap;
 var markers = [];
@@ -6,11 +8,20 @@ var markers = [];
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', () => {
+  createDatabase();
   initMap();
   fetchNeighborhoods();
   fetchCuisines();
   _registerServiceWorkers();
 });
+
+createDatabase = () => {
+  console.warn('createDatabase() fired...');
+
+  // const db = idb.open('mws-restaurants', 1, upgradeDb => {
+  //   upgradeDb.createObjectStore('restaurants', { keypath: 'id' });
+  // });
+};
 
 /**
  * Fetch all neighborhoods and set their HTML.

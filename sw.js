@@ -74,22 +74,3 @@ self.addEventListener('fetch', event => {
     }
   }
 });
-
-// Create IndexDB to store fetch requests
-self.addEventListener('activate', function(event) {
-  console.warn('entered activate event...');
-  event.waitUntil(createDB());
-});
-
-function createDB() {
-  console.warn('createDB fired...');
-
-  // idb.open('restaurants', 2, function(upgradeDB) {
-  //   // var store = upgradeDB.createObjectStore('beverages', {
-  //   //   keyPath: 'id'
-  //   // });
-  //   // store.put({ id: 123, name: 'coke', price: 10.99, quantity: 200 });
-  //   // store.put({ id: 321, name: 'pepsi', price: 8.99, quantity: 100 });
-  //   // store.put({ id: 222, name: 'water', price: 11.99, quantity: 300 });
-  // });
-}
