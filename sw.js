@@ -31,6 +31,8 @@ self.addEventListener('install', event => {
         'img/8.jpg',
         'img/9.jpg',
         'img/10.jpg',
+        'js/dbhelper.js',
+        'js/idb.min.js',
         'js/main.js',
         'js/restaurant_info.js',
         'https://fonts.googleapis.com/css?family=Roboto&display=swap'
