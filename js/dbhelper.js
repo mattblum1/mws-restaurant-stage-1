@@ -26,7 +26,6 @@ class DBHelper {
       .then(DBHelper.checkStatus)
       .then(DBHelper.parseJson)
       .then(json => {
-        console.log('json', json);
         callback(null, json);
       })
       .catch(err => {
