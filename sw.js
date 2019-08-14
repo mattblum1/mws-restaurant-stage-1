@@ -1,3 +1,5 @@
+// import idb from 'idb';
+
 var cacheName = 'restaurant-reviews';
 var cacheVersion = 'v1';
 var staticCacheName = `${cacheName}-${cacheVersion}`;
@@ -11,9 +13,9 @@ self.addEventListener('install', event => {
         // 'js/',
         // 'css/',
         // 'img/',
-        '/restaurant.html',
-        'data/restaurants.json',
+        // 'data/restaurants.json',
         'index.html',
+        '/restaurant.html',
         'css/styles.css',
         'css/xs.css',
         'css/sm.css',
@@ -34,6 +36,7 @@ self.addEventListener('install', event => {
         // 'https://normalize-css.googlecode.com/svn/trunk/normalize.css', // 404 returned
         'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
         'https://fonts.googleapis.com/css?family=Roboto&display=swap'
+        // 'http://localhost:1337/restaurants' // Use IndexDB for JSON
       ]);
     })
   );
@@ -71,3 +74,22 @@ self.addEventListener('fetch', event => {
     }
   }
 });
+
+// Create IndexDB to store fetch requests
+self.addEventListener('activate', function(event) {
+  console.warn('entered activate event...');
+  event.waitUntil(createDB());
+});
+
+function createDB() {
+  console.warn('createDB fired...');
+
+  // idb.open('restaurants', 1, function(upgradeDB) {
+  //   // var store = upgradeDB.createObjectStore('beverages', {
+  //   //   keyPath: 'id'
+  //   // });
+  //   // store.put({ id: 123, name: 'coke', price: 10.99, quantity: 200 });
+  //   // store.put({ id: 321, name: 'pepsi', price: 8.99, quantity: 100 });
+  //   // store.put({ id: 222, name: 'water', price: 11.99, quantity: 300 });
+  // });
+}
