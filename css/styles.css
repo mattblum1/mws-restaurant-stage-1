@@ -366,3 +366,13 @@ ul#restaurants-list li {
 .leaflet-container .leaflet-bottom.leaflet-right a {
   color: #005c85;
 }
+
+/* ====================== Accessibility Helpers ================== */
+.hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

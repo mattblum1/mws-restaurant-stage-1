@@ -10,8 +10,8 @@
     <!-- May require a valid SSL cert.  -->
     <meta name="theme-color" content="#252831" />
 
-    <link rel="icon" sizes="64x64" href="icons/icon.png">
-    <link rel="apple-touch-icon" href="icons/icon.png">
+    <link rel="icon" sizes="64x64" href="icons/icon.png" />
+    <link rel="apple-touch-icon" href="icons/icon.png" />
 
     <link
       rel="stylesheet"
@@ -53,7 +53,10 @@
       </section>
       <section>
         <div id="filter-options" class="filter-options">
-          <label for="neighborhoods-select"><h2>Filter Results</h2><label>
+          <h2>Filter Results</h2>
+          <label for="neighborhoods-select" class="hidden"
+            >Filter By Neighborhood</label
+          >
           <select
             id="neighborhoods-select"
             name="neighborhoods"
@@ -61,6 +64,7 @@
           >
             <option value="all">All Neighborhoods</option>
           </select>
+          <label for="cuisines-select" class="hidden">Filter By Cuisine</label>
           <select
             id="cuisines-select"
             name="cuisines"
@@ -83,7 +87,7 @@
       type="application/javascript"
       charset="utf-8"
       src="js/idb.min.js"
-      ></script>
+    ></script>
     <script
       defer
       type="application/javascript"
