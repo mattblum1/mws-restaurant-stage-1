@@ -1,4 +1,4 @@
-// import idb from 'idb';
+import idb from 'idb';
 
 let restaurants, neighborhoods, cuisines;
 var newMap;
@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
 createDatabase = () => {
   console.warn('createDatabase() fired...');
 
-  // const db = idb.open('mws-restaurants', 1, upgradeDb => {
-  //   upgradeDb.createObjectStore('restaurants', { keypath: 'id' });
-  // });
+  const db = await idb.open('mws-restaurants', 1, upgradeDb => {
+    upgradeDb.createObjectStore('restaurants', { keypath: 'id' });
+  });
 };
 
 /**
