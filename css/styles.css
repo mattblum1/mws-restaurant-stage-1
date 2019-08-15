@@ -27,13 +27,13 @@ li {
   color: #333;
 }
 a {
-  color: orange;
+  color: #3f51b5;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #3397db;
-  text-decoration: none;
+  color: #fff;
+  text-decoration: underline;
 }
 a img {
   border: none 0px #fff;
@@ -66,19 +66,22 @@ section {
   min-height: 100%;
 }
 #footer {
-  background-color: #444;
-  color: #aaa;
+  background-color: #3f51b5;
+  color: #fff;
   font-size: 0.8rem;
   letter-spacing: 1px;
   padding: 25px;
   text-align: center;
   text-transform: uppercase;
 }
+#footer a {
+  color: #fff;
+}
 /* ====================== Navigation ====================== */
 nav {
   width: 100%;
   height: 80px;
-  background-color: #252831;
+  background-color: #3f51b5;
   /* text-align: center; */
   display: flex;
   justify-content: center;
@@ -120,10 +123,10 @@ nav h1 a {
 }
 
 /* Add a color on mouse-over */
-#breadcrumb li a:hover {
+/* #breadcrumb li a:hover {
   color: #01447e;
   text-decoration: underline;
-}
+} */
 /* ====================== Map ====================== */
 #map {
   height: 400px;
@@ -134,7 +137,7 @@ nav h1 a {
 .filter-options {
   width: 100%;
   /* height: 50px; */
-  background-color: #3397db;
+  background-color: #3f51b5;
   align-items: center;
   display: flex;
   /* height: 63px; */
@@ -204,7 +207,7 @@ ul#restaurants-list li {
   min-height: 155px;
 }
 #restaurants-list li h1 {
-  color: #f18200;
+  color: #3f51b5;
   font-family: Roboto, Arial, sans-serif;
   font-size: 1.4rem;
   font-weight: 200;
@@ -218,7 +221,7 @@ ul#restaurants-list li {
   font-size: 1.1rem;
 }
 #restaurants-list li a {
-  background-color: orange;
+  background-color: #3f51b5;
   border-bottom: 3px solid #eee;
   color: #fff;
   display: inline-block;
@@ -240,7 +243,7 @@ ul#restaurants-list li {
   width: 100%;
 }
 #restaurant-name {
-  color: #f18200;
+  color: #3f51b5;
   font-family: Roboto, Arial, sans-serif;
   font-size: 2rem;
   font-weight: 200;
@@ -314,7 +317,7 @@ ul#restaurants-list li {
   font-weight: 600;
 }
 #reviews-list li span.raiting {
-  background-color: orange;
+  background-color: #3f51b5;
   color: #fff;
   display: inline-block;
   padding: 8px;
@@ -341,7 +344,7 @@ ul#restaurants-list li {
   transition: top 1s ease-out;
   z-index: 100;
 
-  background-color: orange;
+  background-color: #3f51b5;
   border-bottom: 3px solid #eee;
   color: #fff;
   font-size: 1rem;
@@ -357,4 +360,9 @@ ul#restaurants-list li {
   top: 0px;
   -webkit-transition: top 0.1s ease-in;
   transition: top 0.1s ease-in;
+}
+
+/* ====================== Leaflet Override ================== */
+.leaflet-container .leaflet-bottom.leaflet-right a {
+  color: #005c85;
 }
