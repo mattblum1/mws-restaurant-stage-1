@@ -1,0 +1,23 @@
+{
+  "name": "mws-restaurant-stage-1",
+  "version": "1.0.0",
+  "description": "Restaurant Reviews",
+  "main": "sw.js",
+  "dependencies": {
+    "idb": "^4.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mblum24/mws-restaurant-stage-1.git"
+  },
+  "author": "Matt Blum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mblum24/mws-restaurant-stage-1/issues"
+  },
+  "homepage": "https://github.com/mblum24/mws-restaurant-stage-1#readme"
+}
