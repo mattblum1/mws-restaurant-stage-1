@@ -1,3 +1,33 @@
+const idbApp = (() => {
+  if (!navigator.serviceWorker) {
+    console.log('Service worker not installed.');
+    return Promise.resolve();
+  }
+
+  const dbPromise = idb.open('restaurant-reviews', 1, function(upgradeDb) {
+    switch (upgradeDb.oldVersion) {
+      case 0:
+        upgradeDb.createObjectStore('reviews', {
+          keyPath: 'id'
+        });
+    }
+  });
+
+  async function getRestaurantById(id) {
+    try {
+      const db = await dbPromise;
+      const tx = db.transaction('restaurants');
+      const store = tx.objectStore('restaurants');
+      const restaurantObject = await store.get(parseInt(id));
+      return restaurantObject;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  return { dbPromise, getRestaurantById };
+})();
+
 /**
  * Common database helper functions.
  */
@@ -22,6 +52,9 @@ class DBHelper {
    * Fetch all restaurants.
    */
   static fetchRestaurants(callback) {
+    const id = 1;
+    const idbRestaurant = idbApp.getRestaurantById(id);
+
     fetch(DBHelper.DATABASE_URL)
       .then(DBHelper.checkStatus)
       .then(DBHelper.parseJson)
@@ -55,7 +88,7 @@ class DBHelper {
   /**
    * Fetch a restaurant by its ID.
    */
-  static fetchRestaurantById(id, callback) {
+  static getRestaurantById(id, callback) {
     // fetch all restaurants with proper error handling.
     DBHelper.fetchRestaurants((error, restaurants) => {
       if (error) {

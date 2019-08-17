@@ -1,4 +1,6 @@
-import idb from 'idb';
+// import idb from 'idb';
+// import idb from '../js/idb.min.js';
+// import idb from '../node_modules/idb/build/cjs/index';
 
 let restaurants, neighborhoods, cuisines;
 var newMap;
@@ -8,20 +10,20 @@ var markers = [];
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', () => {
-  createDatabase();
+  // createDatabase();
   initMap();
   fetchNeighborhoods();
   fetchCuisines();
   _registerServiceWorkers();
 });
 
-createDatabase = () => {
-  console.warn('createDatabase() fired...');
+// createDatabase = () => {
+//   console.warn('createDatabase() fired...');
 
-  const db = await idb.open('mws-restaurants', 1, upgradeDb => {
-    upgradeDb.createObjectStore('restaurants', { keypath: 'id' });
-  });
-};
+//   const db = idb.open('mws-restaurants', 1, upgradeDb => {
+//     upgradeDb.createObjectStore('restaurants', { keypath: 'id' });
+//   });
+// };
 
 /**
  * Fetch all neighborhoods and set their HTML.
