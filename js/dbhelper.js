@@ -245,6 +245,31 @@ class DBHelper {
   }
 
   /**
+   * Restaurant image URL.
+   */
+  static imageSrcSetForRestaurant(restaurant, srcSets) {
+    let imageSrcSet = '';
+    const extension = '.jpg';
+
+    // Add each provided srcSet
+    for (let srcSet of srcSets) {
+      imageSrcSet += `img/${
+        restaurant.photograph
+      }-${srcSet}${extension} ${srcSet}w, `;
+    }
+
+    // Remove last instance of ','
+    if (imageSrcSet.includes(',')) {
+      const commaIndex = imageSrcSet.lastIndexOf(',');
+      imageSrcSet =
+        imageSrcSet.substring(0, commaIndex) +
+        imageSrcSet.substring(commaIndex + 1);
+    }
+
+    return imageSrcSet;
+  }
+
+  /**
    * Map marker for a restaurant.
    */
   static mapMarkerForRestaurant(restaurant, map) {
