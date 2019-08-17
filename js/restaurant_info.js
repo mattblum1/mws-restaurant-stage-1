@@ -73,6 +73,8 @@ fetchRestaurantFromURL = callback => {
  * Create restaurant HTML and add it to the webpage
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
+  const srcSets = ['576', '800'];
+
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
 
@@ -80,6 +82,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   image.className = 'restaurant-img';
   image.alt = restaurant.name;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.srcset = DBHelper.imageSrcSetForRestaurant(restaurant, srcSets);
 
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
