@@ -71,22 +71,6 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Use cached HTML pages if available
-// self.addEventListener('fetch', event => {
-//   //   console.log(event.request);
-//   var requestUrl = new URL(event.request.url);
-
-//   if (requestUrl.origin === location.origin) {
-//     if (requestUrl.pathname === '/') {
-//       event.respondWith(caches.match('/'));
-//       return;
-//     } else if (requestUrl.pathname === '/restaurant.html') {
-//       event.respondWith(caches.match('/restaurant.html'));
-//       return;
-//     }
-//   }
-// });
-
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {
