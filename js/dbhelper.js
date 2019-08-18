@@ -110,7 +110,7 @@ class DBHelper {
    * Fetch a restaurant by its ID.
    */
   static fetchRestaurantById(id, callback) {
-    // fetch all restaurants with proper error handling.
+    // Fetch all restaurants with proper error handling.
     const idbRestaurant = idbApp.fetchRestaurantById(id);
     idbRestaurant.then(function(idbRestaurantObject) {
       if (idbRestaurantObject) {

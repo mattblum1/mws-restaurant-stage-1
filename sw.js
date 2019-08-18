@@ -46,8 +46,8 @@ self.addEventListener('install', event => {
         '/js/dbhelper.js',
         '/js/idb.js',
         '/js/main.js',
-        '/js/restaurant_info.js',
-        'https://fonts.googleapis.com/css?family=Roboto&display=swap'
+        '/js/restaurant_info.js'
+        // 'https://fonts.googleapis.com/css?family=Roboto&display=swap' // Causes an issue
         // 'http://localhost:1337/restaurants' // Use IndexDB for cahcing JSON
       ]);
     })
@@ -82,7 +82,7 @@ self.addEventListener('fetch', function(event) {
         return response;
       }
       return fetch(event.request).then(response =>
-        caches.open(CURRENT_CACHES.prefetch).then(cache => {
+        caches.open(staticCacheName.prefetch).then(cache => {
           // Cache response after making a request
           cache.put(event.request, response.clone());
           // Return original response
