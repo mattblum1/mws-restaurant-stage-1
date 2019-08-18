@@ -1,3 +1,5 @@
+const staticStoreName = 'restaurants';
+
 const idbApp = (() => {
   if (!navigator.serviceWorker) {
     console.log('Service worker not installed');
@@ -7,7 +9,7 @@ const idbApp = (() => {
   const dbPromise = idb.open('restaurant-reviews', 1, function(upgradeDb) {
     switch (upgradeDb.oldVersion) {
       case 0:
-        upgradeDb.createObjectStore('reviews', {
+        upgradeDb.createObjectStore(staticStoreName, {
           keyPath: 'id'
         });
     }
@@ -17,30 +19,34 @@ const idbApp = (() => {
    * Fetch restaurant by ID.
    */
   async function fetchRestaurantById(id) {
-    try {
-      const db = await dbPromise;
-      const tx = db.transaction('restaurants');
-      const store = tx.objectStore('restaurants');
-      const restaurantObject = await store.get(parseInt(id));
-      return restaurantObject;
-    } catch (e) {
-      console.log(e);
-    }
+    return dbPromise
+      .then(function(db) {
+        const tx = db.transaction(staticStoreName);
+        const store = tx.objectStore(staticStoreName);
+        return store.get(parseInt(id));
+      })
+      .then(function(restaurantObject) {
+        return restaurantObject;
+      })
+      .catch(function(e) {
+        console.log(e);
+      });
   }
 
   /**
    * Add restaurant.
    */
   async function addRestaurantById(restaurant) {
-    try {
-      const db = await dbPromise;
-      const tx = db.transaction('restaurants', 'readwrite');
-      const store = tx.objectStore('restaurants');
-      store.put(restaurant);
-      return tx.complete;
-    } catch (e) {
-      console.log(e);
-    }
+    return dbPromise
+      .then(function(db) {
+        const tx = db.transaction(staticStoreName, 'readwrite');
+        const store = tx.objectStore(staticStoreName);
+        store.put(restaurant);
+        return tx.complete;
+      })
+      .catch(function(e) {
+        console.log(e);
+      });
   }
 
   return { dbPromise, fetchRestaurantById, addRestaurantById };
@@ -76,9 +82,9 @@ class DBHelper {
       .then(json => {
         callback(null, json);
       })
-      .catch(err => {
-        console.error('Error:', err.message);
-        callback(null, err);
+      .catch(e => {
+        console.error(e);
+        callback(null, e);
       });
   }
 
@@ -175,11 +181,11 @@ class DBHelper {
       } else {
         let results = restaurants;
         if (cuisine != 'all') {
-          // filter by cuisine
+          // Filter by cuisine
           results = results.filter(r => r.cuisine_type == cuisine);
         }
         if (neighborhood != 'all') {
-          // filter by neighborhood
+          // Filter by neighborhood
           results = results.filter(r => r.neighborhood == neighborhood);
         }
         callback(null, results);
@@ -240,8 +246,7 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    const extension = '.jpg';
-    return `/img/${restaurant.photograph}${extension}`;
+    return `/img/${restaurant.photograph}.jpg`;
   }
 
   /**
@@ -249,13 +254,10 @@ class DBHelper {
    */
   static imageSrcSetForRestaurant(restaurant, srcSets) {
     let imageSrcSet = '';
-    const extension = '.jpg';
 
     // Add each provided srcSet
     for (let srcSet of srcSets) {
-      imageSrcSet += `img/${
-        restaurant.photograph
-      }-${srcSet}${extension} ${srcSet}w, `;
+      imageSrcSet += `img/${restaurant.photograph}-${srcSet}.jpg ${srcSet}w, `;
     }
 
     // Remove last instance of ','
